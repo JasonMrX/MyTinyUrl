@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace JasonMrX.MyTinyUrl.Decode
+namespace JasonMrX.MyTinyUrl
 {
     public static class DecodeTinyUrl
     {
