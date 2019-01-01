@@ -21,14 +21,14 @@ namespace JasonMrX.MyTinyUrl.Common
                 new StorageCredentials("mytinyurlstorage", storageKey), true);
             var tableClient = storageAccount.CreateCloudTableClient();
             _myTinyUrlsTable = tableClient.GetTableReference("MyTinyUrlsTable");
-            _myTinyUrlsTable.CreateIfNotExistsAsync().Wait();
+            bool success = _myTinyUrlsTable.CreateIfNotExistsAsync().Result;
         }
 
-        public void Insert(string tinyUrlKey, string originalUrl)
+        public async Task InsertAsync(string tinyUrlKey, string originalUrl)
         {
             var tinyUrlMapEntity = new TinyUrlMapEntity(tinyUrlKey, originalUrl);
             var insertOperation = TableOperation.Insert(tinyUrlMapEntity);
-            _myTinyUrlsTable.ExecuteAsync(insertOperation).Wait();
+            await _myTinyUrlsTable.ExecuteAsync(insertOperation);
         }
     }
 }
