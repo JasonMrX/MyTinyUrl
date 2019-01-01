@@ -7,9 +7,9 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using JasonMrX.MyTinyUrl.Common;
 using System.Text;
 using System.Web;
+using JasonMrX.MyTinyUrl.Common;
 
 namespace JasonMrX.MyTinyUrl
 {
@@ -30,7 +30,7 @@ namespace JasonMrX.MyTinyUrl
             await TableStorageAccessor.Instance.InsertAsync(tinyUrlKey, url);
 
             return url != null
-                ? (ActionResult)new OkObjectResult($"http://mytinyurl.com/{tinyUrlKey}")
+                ? (ActionResult)new OkObjectResult(tinyUrlKey)
                 : new BadRequestObjectResult("The http request does not contain a parameter named url");
         }
 

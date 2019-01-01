@@ -6,7 +6,9 @@ namespace JasonMrX.MyTinyUrl.Common
 {
     public class TinyUrlMapEntity : TableEntity
     {
-        private const string DEFAULT_ROWKEY = "DEFAULT_ROWKEY";
+        public const string DEFAULT_ROWKEY = "DEFAULT_ROWKEY";
+
+        public TinyUrlMapEntity() {}
 
         public TinyUrlMapEntity(string tinyUrlKey, string originalUrl, string rowKey = DEFAULT_ROWKEY)
         {

@@ -7,6 +7,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using JasonMrX.MyTinyUrl.Common;
 
 namespace JasonMrX.MyTinyUrl
 {
@@ -17,17 +18,13 @@ namespace JasonMrX.MyTinyUrl
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("DecodeTinyUrl Triggered.");
+            string tinyUrlKey = req.Query["tinyUrlKey"];
+            string originalUrl = await TableStorageAccessor.Instance.QueryAsync(tinyUrlKey);
 
-            string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            return name != null
-                ? (ActionResult)new OkObjectResult($"Hello, {name}")
-                : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+            return tinyUrlKey != null
+                ? (ActionResult)new OkObjectResult(originalUrl)
+                : new BadRequestObjectResult("The http request does not contain a parameter named tinyUrlKey");
         }
     }
 }

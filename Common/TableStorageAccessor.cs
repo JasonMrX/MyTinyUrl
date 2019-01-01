@@ -30,5 +30,13 @@ namespace JasonMrX.MyTinyUrl.Common
             var insertOperation = TableOperation.Insert(tinyUrlMapEntity);
             await _myTinyUrlsTable.ExecuteAsync(insertOperation);
         }
+
+        public async Task<string> QueryAsync(string tinyUrlKey)
+        {
+            var queryOperation = TableOperation.Retrieve<TinyUrlMapEntity>(
+                tinyUrlKey, TinyUrlMapEntity.DEFAULT_ROWKEY);
+            var result = await _myTinyUrlsTable.ExecuteAsync(queryOperation);
+            return ((TinyUrlMapEntity)result.Result)?.OriginalUrl;
+        }
     }
 }
