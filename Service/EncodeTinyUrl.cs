@@ -9,9 +9,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Text;
 using System.Web;
-using JasonMrX.MyTinyUrl.Common;
+using MyTinyUrl.Service.Common;
 
-namespace JasonMrX.MyTinyUrl
+namespace MyTinyUrl.Service
 {
     public static class EncodeTinyUrl
     {

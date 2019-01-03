@@ -4,7 +4,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System.Threading.Tasks;
 
-namespace JasonMrX.MyTinyUrl.Common
+namespace MyTinyUrl.Service.Common
 {
     public class TableStorageAccessor
     {

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "Service"
+		},
+		{
+			"path": "Web"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	}
+}

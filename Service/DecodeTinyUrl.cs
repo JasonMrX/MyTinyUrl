@@ -7,9 +7,9 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using JasonMrX.MyTinyUrl.Common;
+using MyTinyUrl.Service.Common;
 
-namespace JasonMrX.MyTinyUrl
+namespace MyTinyUrl.Service
 {
     public static class DecodeTinyUrl
     {

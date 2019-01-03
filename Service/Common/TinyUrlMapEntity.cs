@@ -2,7 +2,7 @@ using System;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace JasonMrX.MyTinyUrl.Common
+namespace MyTinyUrl.Service.Common
 {
     public class TinyUrlMapEntity : TableEntity
     {
